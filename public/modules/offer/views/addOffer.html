@@ -1,0 +1,113 @@
+<main>        
+ <section class="container">
+          <div class="row">
+              <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-xs-offset-1 col-md-10 col-md-offset-1 register">
+                  <h1> Add New Offer<small></small></h1>
+                  <form role="form" name="offer" novalidate>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                  <label>OFFUZ phrase/words*</label>
+                              <input type="text" name="offerTitle"  class="form-control input-sm floatlabel" ng-model="Offer.title" placeholder="Offer Title" required>
+                        <p>
+                          <span style="color:red" ng-show="(offer.offerTitle.$dirty && offer.offerTitle.$invalid) || offer.$submitted">
+                        <span style="color:red" ng-show="offer.offerTitle.$error.required">Offer title is required.</span>
+                          </span>
+                      </p>
+                                </div>
+                            </div>
+
+                         <div class="col-sm-12">
+                        <label>Date and time range*</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                      </div>
+                      <input type="text" name="datetime" class="form-control pull-right reservationtime input-sm floatlabel" ng-model="Offer.datetimerange" readonly required >
+                       <p>
+                          <span style="color:red" ng-show="(offer.datetime.$dirty && offer.datetime.$invalid) || offer.$submitted">
+                        <span style="color:red" ng-show="offer.datetime.$error.required">Date time is required.</span>
+                          </span>
+                      </p>
+                    </div>
+                    </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="form-group" ng-init="Offer.businessType=1">
+                                  <label class="radio-block">Business Type *</label>
+                                <label class="radio-inline"><input type="radio" ng-model="Offer.businessType"name="optradio" value="1" required>Physical</label>
+                                  <label class="radio-inline"><input type="radio" ng-model="Offer.businessType" name="optradio" value="2">Ecomm</label>
+                                  <label class="radio-inline"><input type="radio" ng-model="Offer.businessType" name="optradio" value="3" >Both</label> 
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                               <div class="form-group">
+                                  <label for="sel1">Type Of Offer Description *</label>
+                                  <select class="form-control" name="type" id="type" ng-model="Offer.type" required>
+                            <option value="">Select Offer Type</option>
+                            <option  ng-repeat="offerType in offertypes" value={{offerType.name}}>{{offerType.name}}</option>
+                       </select>
+                         <div style="color:red" ng-show="offer.type.$dirty && offer.type.$invalid">
+                           <span ng-show="offer.type.$error.required">type is required.</span>
+                         </div>
+                             </div>
+                            </div>
+                     
+                            <div class="col-sm-12">
+                               <div class="form-group">
+                                  <label for="comment">Extended offer description *</label>
+                                  <textarea class="form-control" name='description' rows="5" ng-model="Offer.description"></textarea>
+                       <p>
+                           <span style="color:red" ng-show="(offer.description.$dirty && offer.description.$invalid) || offer.$submitted">
+                         <span style="color:red" ng-show="offer.description.$error.required">Extended offer description is required.</span>
+                           </span>
+                      </p>
+                                </div>
+                            </div>
+                
+                           <!--  <div class="col-sm-12">
+                                <div class="form-group">
+                                  <label>Upload a company logo/image</label>
+                              <input type="file" class="form-control input-sm floatlabel">
+                                </div>
+                            </div> -->
+                    <label>Offer Image*</label>
+                      <input type="file" class="form-control input-sm floatlabel" ngf-select ng-model="picFile" name="file"    
+                           accept="image/*" ngf-max-size="2MB" required
+                           ngf-model-invalid="errorFiles" >
+                      <i ng-show="myForm.file.$error.required">*required</i><br>
+                      <i ng-show="myForm.file.$error.maxSize">File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M</i>
+                    <img ng-show="offer.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+                    <br>
+
+                    <input type="checkbox" name="publish" ng-model="Offer.publish" id="publish"/> Publish Offer? 
+
+                            <div class="col-sm-12">
+                              <div class="btn-grp">
+                                    <button class="" type="submit" ng-click="offer.$valid && addOffer()">    Save </button>
+                                    <button class="" ng-click="cancel()">Cancel</button>
+                                </div>
+                            </div>
+                        </div><!--row ends-->
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+<script type="text/javascript">
+  //Date range picker
+  $(function () {
+    $('.reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
+  });
+
+  $(document).ready(function(){
+    $('#type').change(function(){
+        typeVal = $(this).val();
+        if(typeVal == "other"){
+          $("#type_description").show();
+        }else{
+          $("#type_description").hide();
+        }
+    });
+  });
+</script>

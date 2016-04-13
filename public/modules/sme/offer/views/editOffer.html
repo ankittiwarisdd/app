@@ -1,0 +1,159 @@
+<style type="text/css">
+  .container-fluid.next-container {
+    background-color: #fff;
+    border-radius: 3px;
+    border-top: 2px solid #c1c1c1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding-bottom: 20px;
+  }
+  .col-md-8.bg-color.clearfix { padding-left: 0;}
+  .next-container .container {  padding-left: 0;}
+  .container-fluid.next-container {  padding-left: 5px;}
+  .form-group { margin-bottom: 0px; }
+</style>
+
+<section class="content-header">
+<h1>
+  Add New Offer
+</h1>
+<ol class="breadcrumb">
+  <li><a href="#/"><i class="fa fa-dashboard"></i> Home</a></li>
+  <li><a ui-sref="manageOffer">Offers</a></li> 
+  <li>Add Offer</li>                   
+</ol>
+</section>        
+<section class="content">
+        <div class="container-fluid next-container">
+      <section class="container">
+    <div class="container-page">
+      <div class="alert alert-danger alert-dismissable" ng-show="serverMessage"  ng-Cloak><button class="close" aria-hidden="true" data-dismiss="alert" type="button" ng-Cloak>×</button>{{errorMessage}}
+        <ul>
+          <li style="list-style:none" data-ng-repeat="err in serverMessage">
+          {{ err }}
+          </li>
+        </ul>
+      </div>
+                  <form role="form" name="offer" novalidate>
+                  <input type="hidden" name='id' ng-model="Offer.id">
+                  <div class="col-md-8 bg-color clearfix">
+                  <div class="col-md-12 indicate-req" style="margin-top:10px;">
+                      <label class="indicate-label"><span class="important"> * </span>Indicates required fields</label>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label>OFFUZ phrase/words*</label>
+                    <input type="text" name="offerTitle"  class="form-control input-sm floatlabel" ng-model="Offer.title" placeholder="Offer Title" required>
+                    <p>
+                    <span style="color:red" ng-show="(offer.offerTitle.$dirty && offer.offerTitle.$invalid) || offer.$submitted">
+                      <span style="color:red" ng-show="offer.offerTitle.$error.required">Offer title is required.</span>
+                    </span>
+                    </p>
+                  </div>
+
+                  <div class="form-group col-md-12">
+                    <label>Date and time range*</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                      </div>
+                      <input type="text" name="datetime" class="form-control pull-right reservationtime input-sm floatlabel" ng-model="Offer.datetimerange" readonly required >
+                       <p>
+                          <span style="color:red" ng-show="(offer.datetime.$dirty && offer.datetime.$invalid) || offer.$submitted">
+                        <span style="color:red" ng-show="offer.datetime.$error.required">Date time is required.</span>
+                          </span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-12">
+                      <div ng-init="Offer.businessType=1">
+                        <label class="radio-block">Business Type *</label>
+                        <label class="radio-inline"><input type="radio" ng-model="Offer.businessType"name="optradio" value="1" required>Physical</label>
+                        <label class="radio-inline"><input type="radio" ng-model="Offer.businessType" name="optradio" value="2">Ecomm</label>
+                        <label class="radio-inline"><input type="radio" ng-model="Offer.businessType" name="optradio" value="3" >Both</label> 
+                      </div>
+                  </div>
+                  <div class="form-group col-md-12">
+                        <label for="sel1">Type Of Offer Description * </label>
+                        <select class="form-control" name="type" id="type" ng-model="Offer.type" required>
+                            <option value="">Select Offer Type</option>
+                            <option  ng-repeat="offerType in offertypes" value={{offerType.name}}>{{offerType.name}}</option>
+                       </select>
+                         <div style="color:red" ng-show="offer.type.$dirty && offer.type.$invalid">
+                           <span ng-show="offer.type.$error.required">type is required.</span>
+                         </div>
+                  </div>
+
+                  <div class="form-group col-md-12" ng-show="Offer.type == 'other'">
+                        <label for="comment">Other Type </label>
+                        <input type="text" class="form-control" id="type_description" name='type_description' ng-model="Offer.type_description" required></textarea>
+                  </div>
+                     
+                  <div class="form-group col-md-12">
+                        <label for="comment">Extended offer description *</label>
+                        <textarea class="form-control" name='description' rows="5" ng-model="Offer.description" required></textarea>
+                       <p>
+                           <span style="color:red" ng-show="(offer.description.$dirty && offer.description.$invalid) || offer.$submitted">
+                         <span style="color:red" ng-show="offer.description.$error.required">Extended offer description is required.</span>
+                           </span>
+                      </p>
+                  </div>
+                  <!-- <div class="form-group col-md-12">
+                    <label>Offer Image*</label>
+                      <input type="file" class="form-control input-sm floatlabel" ngf-select ng-model="picFile" name="file"    
+                           accept="image/*" ngf-max-size="2MB" required
+                           ngf-model-invalid="errorFiles" >
+                      <i ng-show="myForm.file.$error.required">*required</i><br>
+                      <i ng-show="myForm.file.$error.maxSize">File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M</i>
+                    <img ng-show="offer.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+                  </div> -->
+
+
+                  <div class="form-group col-md-12">
+                  <label>Offer Image*</label><br/>
+                      <img ng-show="Offer.image" width="250px" height="150px" src="/images/offerImages/{{Offer.image}}" />
+                      <button class='btn btn-default' ng-show="Offer.image" ng-click="deleteImageOffer(Offer._id,Offer.image)" >Delete</button>
+
+                      <input ng-show="!Offer.image" type="file" ngf-select ng-model="Offer.pic" name="file" accept="image/*" ngf-max-size="2MB" ngf-model-invalid="errorFiles" ng-hide="">
+                        <i ng-show="myForm.file.$error.required">*required</i><br>
+                        <i ng-show="myForm.file.$error.maxSize">File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M</i>
+
+                      <img ng-show="myForm.file.$valid" ngf-thumbnail="Offer.pic" class="thumb">
+                        <button ng-click="Offer.pic = null" ng-show="Offer.pic">Remove</button>
+                  </div>
+
+
+
+
+                  <div class="form-group col-md-12">
+                        <input type="checkbox" name="publish" ng-model="Offer.publish" id="publish"/> Publish Offer?
+                  </div>
+                  <br/><br/>
+                  <div class="form-group col-sm-12">
+                    <div class="btn-grp">
+                          <button class="btn btn-primary" type="submit" ng-click="offer.$valid && updateOffer()">    Save </button>
+                          <a class="btn btn-default" ui-sref="manageOffer()">Cancel</a>
+                      </div>
+                  </div>
+            </form>           
+      </div>
+    </div>
+  </section>
+</div>
+</section>
+<script type="text/javascript">
+  //Date range picker
+  $(function () {
+    $('.reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
+  });
+
+  $(document).ready(function(){
+    $('#type').change(function(){
+        typeVal = $(this).val();
+        if(typeVal == "other"){
+          $("#type_description").show();
+        }else{
+          $("#type_description").hide();
+          $("#type_description").val("");
+        }
+    });
+  });
+</script>

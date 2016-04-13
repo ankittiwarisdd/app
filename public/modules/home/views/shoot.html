@@ -1,0 +1,104 @@
+<style>
+    .hoverClass:hover {text-decoration: underline;}
+</style>
+<div class="other-info">
+             <div class="container">
+                 <div class="col-sm-6  col-xs-12">
+                    <div class="inner-info about-us">
+                        <h5 class="border-bottom">About Us</h5>
+                        <p class="border-bottom">OFFUZ is a new start-up established in 2015 by a small team of digital experts with experience across the loyalty and offers space, as well as ecom/mcom and payments.</p>
+                        <p>We recognise the importance of small and medium businesses to global economy, and their needs have so far been unmet in a truly collaborative and inclusive solution.<button type="button" class="read-more" data-toggle="modal" data-target="#myModal">Read More</button></p>
+                        
+                    </div>
+                </div>
+                <!--<div class="col-sm-4  col-xs-12 icon-div">
+                    <div class="inner-info">
+                        <h5 class="border-bottom">Contact Us</h5>
+                        <div class="icon-wrapper">
+                            <p class="border-bottom">We would love to hear your feedback about the service, and how we can improve it, or if you would simply like to ask us any questions please  complete the form below:</p>
+                        </div>
+                        <div class="icon-wrapper">
+                            <div class="icon-inner-wrap mail-info">
+                                <span class="left-icon"><i class="fa fa-envelope-o"></i></span>
+                                <a href="javascript:void(0);" class="hoverClass">pkoc3010@gmail.com</a>
+                                <a href="javascript:void(0);" class="hoverClass">support@OFFuz.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <!--<div class="col-md-3 col-sm-6  col-xs-6">
+                    <div class="inner-info">
+                        <h5 class="border-bottom">Recent Post</h5>
+                        <div class="testimonial">
+                            <a class="user-img"><img src="images/user1.png" alt=""/></a>
+                            <p>Etiam mi sapien, luctus ac tempor quis<br>October 16, 2014</p>
+                        </div>
+                        <div class="testimonial">
+                            <a class="user-img"><img src="images/user1.png" alt=""/></a>
+                            <p>Etiam mi sapien, luctus ac tempor quis<br>October 16, 2014</p>
+                        </div>
+                        <div class="testimonial">
+                            <a class="user-img"><img src="images/user1.png" alt=""/></a>
+                            <p>Etiam mi sapien, luctus ac tempor quis<br>October 16, 2014</p>
+                        </div>
+                        <div class="testimonial">
+                            <a class="user-img"><img src="images/user1.png" alt=""/></a>
+                            <p>Etiam mi sapien, luctus ac tempor quis<br>October 16, 2014</p>
+                        </div>
+                    </div>
+                </div>-->
+               <div class="col-sm-6  col-xs-12" ng-controller="HomeController">
+                    <div class="inner-info shoot-msg">
+                        <h5 class="border-bottom">Shoot a Message</h5>
+                        <form role="form" class="margin-bottom-40" name="shootMsg" novalidate>
+                            <div class="form-group">
+                                <input type="text" placeholder="Name" name="smeMessageName" class="form-control" ng-model="smeMessage.name" required>
+                                <i class="fa fa-user"></i>
+                              <span style="color:red" ng-show="(shootMsg.smeMessageName.$dirty && merchant.smeMessageName.$invalid) || shootMsg.$submitted">
+                                    <span style="color:red" ng-show="shootMsg.smeMessageName.$error.required">Message Name is required.</span>
+                                    </span>
+
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="E-mail" class="form-control" ng-model="smeMessage.email" required>
+                                <i class="fa fa-envelope-o"></i>
+                                <span style="color:red" ng-show="(shootMsg.email.$dirty && shootMsg.email.$invalid) || shootMsg.$submitted">
+                                      <span style="color:red" ng-show="shootMsg.email.$error.required">Email is required.</span>
+                                      <span style="color:red" ng-show="shootMsg.email.$error.email">Enter valid Email address.</span>
+                                     </span>
+                            </div>
+                            <div class="form-group">
+                               <textarea type="text" name="smeMessage" placeholder="Leave a message" class="form-control" ng-model="smeMessage.data" required></textarea>
+                                <span style="color:red" ng-show="(shootMsg.smeMessage.$dirty && merchant.smeMessage.$invalid) || shootMsg.$submitted">
+                                    <span style="color:red" ng-show="shootMsg.smeMessage.$error.required">Message is required.</span>
+                                    </span>
+                            </div>
+                            <div class="btn-grp">
+                                <button class="set-rest" ng-click="cancel()">Reset</button>
+                                <button class="set-rest"  ng-click="shootMsg.$valid && sendMsg()">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+             </div>
+          </div>
+            
+            <!--ABOUTUS MODAL-->
+            <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+            
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">About Us</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>OFFUZ is a new start-up established in 2015 by a small team of digital experts with experience across the loyalty and offers space, as well as ecom/mcom and payments.</p>                 
+                    <p>They know how the big corporates use these attributes to generate consumer excitement and engagement in order to increase sales and revenue. But in their experience, the smaller businesses are left behind or given a minimal service.
+We recognise the importance of small and medium businesses to global economy, and their needs have so far been unmet in a truly collaborative and inclusive solution. That is why OFFUZ was established.</p>
+                  </div>
+                </div>
+            
+              </div>
+            </div>

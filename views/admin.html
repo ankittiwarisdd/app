@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html ng-app = "adminApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Administrator</title>
+
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link href="/stylesheets/Admin/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link href="/stylesheets/Admin/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="/stylesheets/Admin/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <!-- iCheck -->
+    <link href="/stylesheets/Admin/blue.css" rel="stylesheet" type="text/css" />
+    <!-- Morris chart -->
+    <link href="/stylesheets/Admin/morris.css" rel="stylesheet" type="text/css" />
+    <!-- jvectormap -->
+    <link href="/stylesheets/Admin/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <!-- Date Picker -->
+    <link href="/stylesheets/Admin/datepicker3.css" rel="stylesheet" type="text/css" />
+    <!-- Daterange picker -->
+    <link href="/stylesheets/Admin/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link href="/stylesheets/Admin/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+
+   
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      .padding-left{padding-left: 50%}
+    </style>
+  </head>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+      <header class="main-header" ng-include="'/elements/admin/header.html'" ng-controller = "NavController" ng-show = "isLoggedIn">
+       		
+      </header>
+
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar" ng-include="'/elements/admin/left_sidebar.html'" ng-controller = "NavController" ng-show = "isLoggedIn">
+       
+      </aside>
+      <span us-spinner="{radius:30, width:8, length: 16, scale:0.50}"></span>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper" ui-view>
+
+      </div><!-- /.content-wrapper -->
+      
+      <footer class="main-footer padding-left" ng-include="'/elements/admin/footer.html'" ng-controller = "NavController" ng-show = "isLoggedIn">
+       
+      </footer>
+      
+     <!--  <div class="loader-overlay" data-loading>
+        <div class="loder-img">
+          <img src="/images/ajax_loader.gif">
+        </div>
+      </div> -->
+
+      <!-- Control Sidebar 
+      <aside class="control-sidebar control-sidebar-dark" ng-include="'/elements/admin/right_sidebar.html'">
+        
+      </aside>--><!-- /.control-sidebar -->
+      <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+      <div class="control-sidebar-bg"></div>
+    </div><!-- ./wrapper -->
+
+    
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      // $.widget.bridge('uibutton', $.ui.button);
+    </script>
+
+    <!-- My web Angular js  -->    
+    <script src="/javascripts/angular/angular.min.js" type="text/javascript"></script>
+  	<script src="/javascripts/angular/angular-ui-router.min.js" type="text/javascript"></script>
+  	<script src="/javascripts/angular/ngStorage.min.js" type="text/javascript"></script>
+  	<script src="/javascripts/angular/ui-grid.min.js" type="text/javascript"></script>
+  	<script src="/javascripts/angular/angular-animate.js" type="text/javascript"></script>
+    <script src="/javascripts/angular/angular-route.min.js" type="text/javascript"></script>
+    <script src="/javascripts/angular/angular-route.min.js" type="text/javascript"></script>
+    <script src="/javascripts/Admin/web_js/jQuery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="/javascripts/Admin/web_js/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript">
+        setTimeout(function(){
+                   //var jquery = document.createElement('script');
+                   //jquery.src = "/javascripts/Admin/web_js/jQuery-2.1.4.min.js";
+                   //document.getElementsByTagName('head')[0].appendChild(jquery);
+
+                  var jqueryUi = document.createElement('script');
+                  jqueryUi.src = "/javascripts/Admin/web_js/jquery-ui.min.js";
+                  document.getElementsByTagName('head')[0].appendChild(jqueryUi);
+
+                  var bootstrapMinJs = document.createElement('script');
+                  bootstrapMinJs.src = "/javascripts/Admin/web_js/bootstrap.min.js";
+                  document.getElementsByTagName('head')[0].appendChild(bootstrapMinJs);
+
+                  var raphaelMinJs = document.createElement('script');
+                  raphaelMinJs.src = "/javascripts/Admin/web_js/raphael-min.js";
+                  document.getElementsByTagName('head')[0].appendChild(raphaelMinJs);
+
+                  var morrisMinJs = document.createElement('script');
+                  morrisMinJs.src = "/javascripts/Admin/web_js/morris.min.js";
+                  document.getElementsByTagName('head')[0].appendChild(morrisMinJs);
+
+                  var sparklineMinJs = document.createElement('script');
+                  sparklineMinJs.src = "/javascripts/Admin/web_js/jquery.sparkline.min.js";
+                  document.getElementsByTagName('head')[0].appendChild(sparklineMinJs);
+
+                  var knobJs = document.createElement('script');
+                  knobJs.src = "/javascripts/Admin/web_js/jquery.knob.js";
+                  document.getElementsByTagName('head')[0].appendChild(knobJs);
+
+                  var momentJs = document.createElement('script');
+                  momentJs.src = "/javascripts/Admin/web_js/moment.min.js";
+                  document.getElementsByTagName('head')[0].appendChild(momentJs);
+
+                  var daterangepickerJs = document.createElement('script');
+                  daterangepickerJs.src = "/javascripts/Admin/web_js/daterangepicker.js";
+                  document.getElementsByTagName('head')[0].appendChild(daterangepickerJs);
+
+                  var bootstrapDatepickerJs = document.createElement('script');
+                  bootstrapDatepickerJs.src = "/javascripts/Admin/web_js/bootstrap-datepicker.js";
+                  document.getElementsByTagName('head')[0].appendChild(bootstrapDatepickerJs);
+
+                  //var wysihtml5Js = document.createElement('script');
+                  //wysihtml5Js.src = "/javascripts/Admin/web_js/bootstrap3-wysihtml5.all.min.js";
+                  //document.getElementsByTagName('head')[0].appendChild(wysihtml5Js);
+
+                  var slimscroll = document.createElement('script');
+                  slimscroll.src = "/javascripts/Admin/web_js/jquery.slimscroll.min.js";
+                  document.getElementsByTagName('head')[0].appendChild(slimscroll);
+
+                  var fastclickJs = document.createElement('script');
+                  fastclickJs.src = "/javascripts/Admin/web_js/fastclick.min.js";
+                  document.getElementsByTagName('head')[0].appendChild(fastclickJs);
+
+                  var appMinJs = document.createElement('script');
+                  appMinJs.src = "/javascripts/Admin/web_js/app.min.js";
+                  document.getElementsByTagName('head')[0].appendChild(appMinJs);
+
+                  var dashboardJs = document.createElement('script');
+                  dashboardJs.src = "/javascripts/Admin/web_js/dashboard.js";
+                  document.getElementsByTagName('head')[0].appendChild(dashboardJs);
+
+                  var demoJs = document.createElement('script');
+                  demoJs.src = "/javascripts/Admin/web_js/demo.js";
+                  document.getElementsByTagName('head')[0].appendChild(demoJs);                  
+       },  
+      100);   
+
+  </script>
+    <!-- My web File Upload js  -->
+    <script src="/javascripts/Admin/web_js/ng-file-upload-shim.min.js" type="text/javascript"></script>
+    <script src="/javascripts/Admin/web_js/ng-file-upload.min.js" type="text/javascript"></script>
+    <script src="/javascripts/Admin/web_js/ng-table.min.js" type="text/javascript"></script>
+
+
+
+    <!-- My web Angular custom js  -->
+    <script src="/javascripts/Admin/angular_app.js" type="text/javascript"></script>
+    <script src="/javascripts/Admin/communication.js"></script>
+    <script src="/javascripts/Admin/constants.js" type="text/javascript"></script>
+    <script src="/javascripts/Front/web_js/angular-spinner.min.js" type="text/javascript"></script>
+    <script src="/javascripts/Front/web_js/spin.min.js" type="text/javascript"></script>
+    <script src="/javascripts/Front/web_js/angular-loading-spinner.js" type="text/javascript"></script>
+
+
+  	<!-- Admin Self Scripts -->
+  	<script src="/modules/admin/self/controller.js"></script>
+  	<script src="/modules/admin/self/service.js"></script>
+  	<script src="/modules/admin/self/directive.js"></script>
+
+  <!-- Admin SiteContents APP Scripts -->
+    <script src="/modules/admin/content/controller.js"></script>
+    <script src="/modules/admin/content/service.js"></script>
+    <script src="/modules/admin/content/directive.js"></script>
+
+    <!-- Admin Self Scripts -->
+    <script src="/modules/admin/authentication/controller.js"></script>
+    <script src="/modules/admin/authentication/service.js"></script>
+    <script src="/modules/admin/authentication/directive.js"></script>
+    <script src="/modules/admin/authentication/rememberme.js"></script>
+
+    <!-- Admin Category Scripts -->
+    <script src="/modules/admin/category/controller.js"></script>
+    <script src="/modules/admin/category/service.js"></script>
+    <script src="/modules/admin/category/directive.js"></script>
+
+    <!-- Admin SubCategory Scripts -->
+    <script src="/modules/admin/subcategory/controller.js"></script>
+    <script src="/modules/admin/subcategory/service.js"></script>
+    <script src="/modules/admin/subcategory/directive.js"></script>
+
+    <!-- Admin SiteContents Web Scripts -->
+    <script src="/modules/admin/sitecontent/controller.js"></script>
+    <script src="/modules/admin/sitecontent/service.js"></script>
+    <script src="/modules/admin/sitecontent/directive.js"></script>
+
+
+
+    <!-- Admin faq APP Scripts -->
+    <script src="/modules/admin/faq/controller.js"></script>
+    <script src="/modules/admin/faq/service.js"></script>
+
+    <!-- Admin Merchant Scripts -->
+    <script src="/modules/admin/merchant/controller.js"></script>
+    <script src="/modules/admin/merchant/service.js"></script>
+    <script src="/modules/admin/merchant/directive.js"></script>
+
+    <!-- Admin Offer type Scripts -->
+    <script src="/modules/admin/offertype/controller.js"></script>
+    <script src="/modules/admin/offertype/service.js"></script>
+    <script src="/modules/admin/offertype/directive.js"></script>
+    <script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
+  
+  </body>
+</html>

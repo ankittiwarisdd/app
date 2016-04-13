@@ -1,0 +1,116 @@
+ <main>
+        <div class="container-fluid banner">
+            <div class="row">
+                <!-- The carousel -->
+                <div id="transition-timer-carousel" class="carousel slide transition-timer-carousel" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#transition-timer-carousel" data-slide-to="0"><i class="fa fa-chevron-left"></i></li>
+                        <li data-target="#transition-timer-carousel" data-slide-to="1"><i class="fa fa-chevron-right"></i></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                      <div class="item active">
+                        <img src="images/bannerImg.png" alt="" />
+                      </div>
+                  <div class="item">
+                    <img src="images/bannerImg.png" alt="" />
+                  </div> 
+                  <div class="item">
+                    <img src="images/bannerImg.png" alt="" />
+                  </div>
+              </div>
+                    <div class="container banner-overlay">
+                        <div class="banner-content wow fadeInLeft delay-05s animated">
+                            <h1>EVERYONE WANTS A DEAL,<br>GRAB YOUR DEAL NOW!</h1>
+                            <a ui-sref="front.register" class="btn">PLACE OFFER NOW</a>
+                        </div>
+                    </div> 
+                    <div class="banner-mobile wow fadeInDown delay-02s animated">
+                      <img src="images/SliderPhn.png" alt=""/>
+                    </div>   
+                </div>
+          </div>
+      </div>
+       
+        <div class="container-fluid exclusive-offers">
+          <div class="row">
+              <div class="col-sm-6 col-xs-6 deals fadeInLeft delay-05s animated">
+                  <p>GET EXCLUSIVE<br>OFFERS ON YOUR<br>FAVOURITE DEALS</p>
+                </div>
+                <div class="col-sm-6 col-xs-6 offers fadeInDown delay-05s animated" >
+                      <div class="col-xs-4 offer-div" ng-repeat='data1 in catData'>
+                        <a ui-sref="front.category({id: '{{data1._id}}'})" class="offer-option" title="{{data1.name}}"><span><i class="fa {{data1.icon}}"></i></span><h6>{{data1.name}}</h6></a>
+                      </div>
+                   
+                      <div class="col-xs-4 offer-div">
+                        <a href="javascript:void(0);" class="offer-option view-more"><span><i class="fa fa-chevron-right"></i></span><h6>View All</h6></a>
+                      </div> 
+                </div>
+            </div>
+        </div>
+        
+        <div class="container more-offers">
+          
+              <div class="col-xs-12">
+                  <h2>More Options</h2>
+                </div>
+                <div class="col-xs-3 offer-div" ng-repeat='data in catData1'> 
+                    <a ui-sref="front.category({id: '{{data._id}}'})" class="offer-option" title="{{data.name}}"><span><i class="fa {{data.icon}}"></i></span><h6>{{data.name}}</h6></a>
+                </div>
+            
+                <div class="col-xs-3 offer-div">
+                    <a ng-click="subcat(data._id)" class="offer-option view-less"><span><i class="fa fa-chevron-left"></i></span><h6>View Less</h6></a>
+                </div>
+            
+        </div>
+        
+        <div class="container features">
+          <div class="row">
+              <div class="col-xs-6 wow fadeInUp delay-05s animated">
+                  <img src="images/feature.png" alt="" />
+                </div>
+                <div class="col-xs-6 feature-option wow fadeInRight delay-02s animated">
+                  <h2>Features</h2>
+                    <ul>
+                      <li>Upload an offer today and watch your sales grow. </li>
+                        <li>Cheaper than those usual print advertisements. </li>
+                        <li>Fantastic products and services at your door steps.</li>
+                        <li>Flashy corporate loyalty programmes but how do YOU compete?.....well here's how</li>
+                        <li>Download the OFFuz App today and Apple site and Google Play</li>
+                    </ul>
+                    <a href="https://play.google.com/store/apps" class="btn dwnld-now" target="_blank">Download OFFuz App now</a>
+                </div>
+            </div>
+        </div>
+       
+        <div class="location-search wow fadeInDown delay-05s animated">
+          <div class="container">
+                <div class="row">
+                    <h3>The instant, location-based Deals search.</h3>
+                </div>
+                <div class="row">
+                    <p>Digital map within their own local area, bringing new and loyal customers through your door.</p>
+                </div>
+                <div class="row">
+                    <a href="https://play.google.com/store/apps" class="try-now">Try It now</a>
+                </div>
+            </div>
+        </div>
+
+         
+    </main>
+
+    <script>
+$(document).ready(function()
+{
+  $(".more-offers").hide();
+  $('.view-more').click(function(){  
+    $(".more-offers").slideDown("slow");  
+  });
+  $(".view-less").click(function(){
+    $(".more-offers").slideUp("slow");
+  });
+});
+
+</script>

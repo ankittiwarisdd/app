@@ -1,0 +1,206 @@
+<style type="text/css">
+	.container-fluid.next-container {
+		background-color: #fff;
+		border-radius: 3px;
+		border-top: 2px solid #c1c1c1;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+		padding-bottom: 20px;
+	}
+	.col-md-8.bg-color.clearfix { padding-left: 0;}
+	.next-container .container {  padding-left: 0;}
+	.container-fluid.next-container {  padding-left: 5px;}
+	.form-group { margin-bottom: 0px; }
+	.form-group.col-md-12 {
+	    margin-top: 10px;
+	}
+</style>
+<section class="content-header">
+			<h1>
+			  Add SME Details (small/medium enterprises)
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="#/"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li><a ui-sref="manageMerchant">SMEs</a></li> 
+				<li>Add SME</li>                   
+			</ol>
+     </section>
+     <!-- Main content -->
+     <section class="content">
+        <div class="container-fluid next-container">
+    	<section class="container">
+		<div class="container-page">
+			<div class="alert alert-danger alert-dismissable" ng-show="serverMessage"  ng-Cloak><button class="close" aria-hidden="true" data-dismiss="alert" type="button" ng-Cloak>×</button>{{errorMessage}}
+				<ul>
+					<li style="list-style:none" data-ng-repeat="err in serverMessage">
+					{{ err }}
+					</li>
+				</ul>
+			</div> 
+			  <div class="alert alert-danger alert-dismissable" ng-show="msgerr">
+               <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>{{msgerr}}
+              </div>
+			<form name="merchant" role="form" novalidate>
+         	<input type="hidden" name='id' ng-model="Merchant.id">
+			<div class="col-md-8 bg-color clearfix">
+                
+		  		<div class="col-md-12 indicate-req" style="margin-top:10px;">
+					  <label class="indicate-label"><span class="important"> * </span>Indicates required fields</label>
+				</div>                
+                
+				<div class="form-group col-md-12">
+					<label>Trading Name<span class="important"> *</span></label>
+					<input type="text" name="tradingName" id="tradingName" class="form-control b-vendor-field" ng-model="Merchant.tradingName" maxlength="50" required>
+					<p>
+					<span style="color:red" ng-show="(merchant.tradingName.$dirty && merchant.tradingName.$invalid) || merchant.$submitted">
+						<span style="color:red" ng-show="merchant.tradingName.$error.required">Trading name is required.</span>
+					</span>
+					</p>
+				</div>				             
+
+				<div class="form-group col-md-12">
+					<label>Business Type </label>
+					<div ng-init="Merchant.businessType=1" />
+				        <input type="radio" ng-model="Merchant.businessType" value="1"><label>Physical</label>
+				        <input type="radio" ng-model="Merchant.businessType" value="2"><label>Ecomm</label>
+				        <input type="radio" ng-model="Merchant.businessType" value="3"><label>Both</label>
+					</div>
+				</div>
+
+				<div class="form-group col-md-12">
+				<label for="name">Choose sector*</label>
+                    <select class="form-control" name="category" id="category" ng-model="Merchant.categories" ng-change="fetchSubCategories(Merchant.categories)" required>
+                          <option value="">Select Sector</option>
+                          <option  ng-repeat="categoryType in categories" value={{categoryType.id}}>{{categoryType.name}}</option>
+                    </select>
+					<div style="color:red" ng-show="merchant.category.$dirty && merchant.category.$invalid">
+						    <span ng-show="merchant.category.$error.required">Category is required.</span>
+					</div>
+				</div>
+
+				<div class="form-group col-md-12">
+				<label for="name">Choose Sector Expansion*</label>
+                    <select class="form-control" name="subcategory" id="subcategory" ng-model="Merchant.subcategories" required>
+                          <option value="">Select Sector Expansion</option>
+                          <option  ng-repeat="subCategoryType in subcategories" value={{subCategoryType.id}}>{{subCategoryType.name}}</option>
+                    </select>
+					<div style="color:red" ng-show="merchant.subcategory.$dirty && merchant.subcategory.$invalid">
+						    <span ng-show="merchant.subcategory.$error.required">Category is required.</span>
+					</div>
+				</div>
+					
+         		<div class="form-group col-md-12">
+					<label>Phone Number<span class="important"> *</span></label>
+					<input placeholder="Phone Number" type="" name="phone" class="form-control b-vendor-field" id="" value="" ng-model="Merchant.phone" ng-pattern="/^(0|[1-9][0-9]*)$/" ng-minlength="10" ng-maxlength="12" required>
+					<p>
+					<span style="color:red" ng-show="(merchant.phone.$dirty && merchant.phone.$invalid) || merchant.$submitted">
+						<span style="color:red" ng-show="merchant.phone.$error.required">Phone Number is required.</span>
+						<span style="color:red" ng-show="merchant.phone.$error.pattern">Only numbers are allowed.</span>
+						<span ng-show="merchant.phone.$error.minlength || merchant.phone.$error.maxlength ">Phone Numbe must be 10  digits.</span>
+					</span>
+					</p>
+				</div> 
+
+				<div class="form-group col-md-12">
+					<label>Email <span class="important"> *</span></label>
+					<input placeholder="Email" type="email" name="email" class="form-control b-vendor-field" id="" value="" ng-model="Merchant.email" required>
+					<p>
+					<span style="color:red" ng-show="(merchant.email.$dirty && merchant.email.$invalid) || merchant.$submitted">
+						<span style="color:red" ng-show="merchant.email.$error.required">Email is required.</span>
+						<span style="color:red" ng-show="merchant.email.$error.email">Enter valid Email address.</span>
+					</span>
+					</p>
+				</div>
+                
+          		<div class="form-group col-md-12">
+					<label>Trading Address<span class="important"> *</span></label>
+					<textarea name="tradingAddress" class="form-control b-vendor-field add" id="" value="" ng-model="Merchant.tradingAddress" required></textarea>
+					<p>
+					<span style="color:red" ng-show="(merchant.tradingAddress.$dirty && merchant.tradingAddress.$invalid) || merchant.$submitted">
+						<span style="color:red" ng-show="merchant.tradingAddress.$error.required">Trading Address is required.</span>
+					</span>
+					</p>
+                   
+				</div>
+				<div class="form-group col-md-12">
+					<label>UserName<span class="important"> *</span></label>
+					<input paceholder="Username" type="textarea" name="username" class="form-control b-vendor-field add" id="" value="" ng-model="Merchant.username" maxlength="15" required>
+					<p>
+					<span style="color:red" ng-show="(merchant.username.$dirty && merchant.username.$invalid) || merchant.$submitted">
+						<span style="color:red" ng-show="merchant.username.$error.required">Username is required.</span>
+					</span>
+					</p>
+                   
+				</div>
+				<div class="form-group col-md-12 ">
+					<label>Country<span class="important"> *</span></label>
+					  	<select id="radius" name="country" class="form-control b-vendor-field" ng-model="Merchant.country" ng-change="fetchStates(Merchant.country)" required>
+                           <option value="">Select</option>
+							<option value="GB">United Kingdom </option>                         
+                      	</select>
+						
+						<p>
+					<span style="color:red" ng-show="(merchant.country.$dirty && merchant.country.$invalid) || merchant.$submitted" required>
+						<span style="color:red" ng-show="merchant.country.$error.required">Country is required.</span>
+					</span>
+					</p>    
+				</div>
+					
+				<div class="form-group col-md-3">
+					<label>State<span class="important"> *</span></label>
+						<select id="radius" name="state" class="form-control" ng-model="Merchant.state" required>
+							<option value="">Select</option>
+							<option  ng-repeat="stateType in states" value={{stateType}}>{{stateType}}</option>
+                        </select>
+						<p>
+					<span style="color:red" ng-show="(merchant.state.$dirty && merchant.state.$invalid) || merchant.$submitted">
+						<span style="color:red" ng-show="merchant.state.$error.required">State is required.</span>
+					</span>
+					</p>    
+				</div>
+
+				<div class="form-group col-md-6">
+					<label>City<span class="important"> *</span></label>
+					<input placeholder="City" type="text" name="city" class="form-control" id="" value="" ng-model="Merchant.city" ng-pattern="/^[a-zA-Z]*$/"  required>
+					<p>
+					<span style="color:red" ng-show="(merchant.city.$dirty && merchant.city.$invalid) || merchant.$submitted">
+						<span style="color:red" ng-show="merchant.city.$error.required">City is required.</span>
+						<span style="color:red" ng-show="merchant.city.$error.pattern">Password must contain alphabates,numbers and special character.</span>
+					</span>
+					</p>       
+				</div>
+             
+                <div class="form-group col-md-3">
+					<label>Postal code<span class="important"> *</span></label>
+					<input placeholder ="ZipCode" type="" name="zip" class="form-control" id="" value="" ng-model="Merchant.zip" ng-pattern="/^[a-zA-Z0-9]{4,10}$/" ng-minlength="6" ng-maxlength="6" required>
+					<p>
+					<span style="color:red" ng-show="(merchant.zip.$dirty && merchant.zip.$invalid) || merchant.$submitted">
+						<span style="color:red" ng-show="merchant.zip.$error.required">Postal code is required.</span>
+						<span style="color:red" ng-show="merchant.zip.$error.pattern">  Not a valid postal code.</span>
+						<span ng-show="merchant.zip.$error.minlength || merchant.zip.$error.maxlength ">Postal code must be 6  digits.</span>
+					</span>
+					</p>    
+				</div>
+
+                <div class="form-group col-md-12">
+                <label>Upload a company logo/image</label><br/>
+                    <img ng-show="Merchant.image" width="250px" height="150px" src="/images/merchantProfiles/{{Merchant.image}}" />
+                    <button class='btn btn-default' ng-show="Merchant.image" ng-click="deleteImageMerchant(Merchant._id,Merchant.image)" >Delete</button>
+
+                    <input ng-show="!Merchant.image" type="file" ngf-select ng-model="Merchant.pic" name="file" accept="image/*" ngf-max-size="2MB" ngf-model-invalid="errorFiles" ng-hide="">
+                      <i ng-show="myForm.file.$error.required">*required</i><br>
+                      <i ng-show="myForm.file.$error.maxSize">File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M</i>
+
+                    <img ng-show="myForm.file.$valid" ngf-thumbnail="Merchant.pic" class="thumb">
+                      <button ng-click="Merchant.pic = null" ng-show="Merchant.pic">Remove</button>
+                </div>    
+                <br/>
+             	<div class="form-group col-md-12">
+					<button type="submit" class="btn btn-primary" ng-click="merchant.$valid && updateMerchant()">Save</button>
+                    <div class='btn btn-default'><a ui-sref="manageMerchant">Cancel</a></div>
+          		</div>
+      		</form>            
+			</div>
+	  </div>
+	</section>
+</div>
+</section><!-- /.content -->

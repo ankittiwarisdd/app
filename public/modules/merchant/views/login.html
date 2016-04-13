@@ -1,0 +1,94 @@
+
+
+<!-- <section class="content" style="margin-top:100px;margin-left:140px;">
+          <div class="row"> -->
+            <!-- left column -->
+          <!--   <div class="col-md-6"> -->
+              <!-- general form elements -->
+            <!--   <div class="box box-primary">
+
+                <div class="box-header with-border">
+                <h4 style="text-align:center">Offuz Merchant Login</h4>
+                </div> --><!-- /.box-header -->
+                <!-- form start -->
+              <!--   <form role="form" name="adminlogin">
+                  <div class="box-body">
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" placeholder="Username" ng-model='username' required />
+                        <span style="color:red" ng-show="adminlogin.$submitted || adminlogin.username.$touched">
+                          <span ng-show="adminlogin.username.$error.required">Please enter username</span>
+                        </span>  
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Password" ng-model='password' required />
+                        <span style="color:red" ng-show="adminlogin.$submitted || adminlogin.password.$touched">
+                            <span ng-show="adminlogin.password.$error.required">Please enter your password.</span>
+                        </span>                     
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="remember" ng-model="remember" id="remember"/> Remember me
+                    </div> 
+                  </div>
+                  <div class="box-footer">
+                    <button type="submit" class="btn bg-primary btn-block" name="login" ng-click="adminlogin.$valid && login()">Submit</button>
+                    <p><a ui-sref="front.forgot">Forgot Password ?</a></p>
+                  </div>
+                </form>
+              </div>-->
+  <!--       </div>
+    </div>
+</section> -->
+
+
+
+
+
+
+<main>
+        <section class="container">
+          <div class="row">
+              <div class="register login">
+                  <h1>Merchant Login</h1>
+                  <form role="form"  name="adminlogin" novalidate>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                  <label>Username *</label>
+                              <input type="text" name="username" id="user_name" class="form-control input-sm floatlabel" placeholder="Enter Username" ng-model='username' required />
+                        <span style="color:red" ng-show="adminlogin.$submitted || adminlogin.username.$touched">
+                          <span ng-show="adminlogin.username.$error.required">Please enter username</span>
+                        </span>  
+                                    <i class="fa fa-user"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                  <label>Password *</label>
+                                    <input type="password" name="password" id="password"  ng-model='password' class="form-control input-sm" placeholder="Enter Password" required />
+                              <span style="color:red" ng-show="adminlogin.$submitted || adminlogin.password.$touched">
+                            <span ng-show="adminlogin.password.$error.required">Please enter your password.</span>
+                        </span>                     
+                                    <i class="fa fa-key"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                              <div class="checkbox">
+                                  <label><input type="checkbox" value="">Remeber Me</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 pull-right">
+                              <div class="forget-pass">
+                                  <a href="#">Forgot Password?</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                              <div class="btn-grp">
+                                    <button class="" name="login" ng-click="adminlogin.$valid && login()">Submit</button>
+                                </div>
+                            </div>
+                        </div><!--row ends-->
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>

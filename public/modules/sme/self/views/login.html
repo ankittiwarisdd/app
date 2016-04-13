@@ -1,0 +1,52 @@
+<style type="text/css">
+   
+    .content-wrapper, .right-side, .main-footer {margin-left: 0px !important;}
+    .skin-green .wrapper, .skin-green .main-sidebar, .skin-green .left-side {}
+    .content {margin-left: 430px !important;}
+    .skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side{background: #ECF0F5}
+</style>
+
+<section class="content" style="margin-top:100px;margin-left:140px;" ng-controller="MerchantController">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+
+                <div class="box-header with-border">
+                <h4 style="text-align:center">Offuz SME Login</h4>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <div class="alert alert-danger alert-dismissable" ng-show="errmsg">
+               <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>{{errmsg}}
+              </div> 
+                <form role="form" name="merchant">
+                  <div class="box-body">
+                    <div class="form-group">
+                        <input type="text" name="email" class="form-control" placeholder="Email" ng-model='email' required />
+                        <span style="color:red" ng-show="merchant.$submitted || merchant.email.$touched">
+                          <span ng-show="merchant.email.$error.required">Please enter email</span>
+                        </span>  
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Password" ng-model='password' required />
+                        <span style="color:red" ng-show="merchant.$submitted || merchant.password.$touched">
+                            <span ng-show="merchant.password.$error.required">Please enter your password.</span>
+                        </span>                     
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="remember" ng-model="remember" id="remember"/> Remember me
+                    </div> 
+                  </div><!-- /.box-body -->
+
+                  <div class="box-footer">
+                    <button type="submit" class="btn bg-olive btn-block" name="login" ng-click="merchant.$valid && login()">Submit</button>
+                    <p><a href="/#/merchants/forgotPassword/">Forgot Password ?</a></p>
+                    <p><a href="/">Back To Website</a></p>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+        </div>
+    </div>
+</section>
+

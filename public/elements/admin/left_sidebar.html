@@ -1,0 +1,137 @@
+ <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar"  ng-controller = "NavController" ng-show = "isLoggedIn">
+          <!-- Sidebar user panel -->
+          <!-- <div class="user-panel">
+            <div class="pull-left image">
+              <img src="/images/logo.png" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+              <p><b>Philip</b> Clayton</p>
+            </div>
+          </div> -->
+          <!-- search form -->
+          <!--<form action="#" method="get" class="sidebar-form">
+            /images/user2-160x160.jpg <div class="input-group" >
+              <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form> -->
+          <!-- /.search form -->
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+            <li class="header">MAIN NAVIGATION</li>
+            <li class="active treeview">
+              <a ui-sref="dashboard">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+              </a>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-user"></i>
+                <span>Manage SME</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a ui-sref="addMerchant"><i class="fa fa-circle-o"></i> Add SME</a></li>
+                <li><a ui-sref="manageMerchant"><i class="fa fa-circle-o"></i> List SME</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-code-fork fa-rotate-90"></i>
+                <span>Manage SME Sectors</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a ui-sref="addCategory"><i class="fa fa-circle-o"></i> Add SME Sector</a></li>
+                <li><a ui-sref="manageCategory"><i class="fa fa-circle-o"></i> List SME Sectors</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-code-fork fa-rotate-90"></i>
+                <span>Manage Sector Expansions</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a ui-sref="addSubCategory"><i class="fa fa-circle-o"></i> Add Sector Expansion</a></li>
+                <li><a ui-sref="manageSubCategory"><i class="fa fa-circle-o"></i> List Sector Expansions</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-star"></i>
+                <span>Manage Offer Types</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a ui-sref="addOfferType"><i class="fa fa-circle-o"></i> Add Offer Type</a></li>
+                <li><a ui-sref="manageOfferType"><i class="fa fa-circle-o"></i> List Offer Types</a></li>
+              </ul>
+            </li>
+            <!-- <li class="treeview">
+              <a href="#">
+                <i class="fa fa-star"></i>
+                <span>Manage Offers</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> List Offers</a></li>
+              </ul>
+            </li> -->
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-laptop"></i>
+                <span>Manage Site Contents Web</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a ui-sref="manageSiteContent"><i class="fa fa-circle-o"></i> List Contents</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-mobile"></i>
+                <span>Manage Site Contents APP</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a ui-sref="manageContent"><i class="fa fa-circle-o"></i> List Contents</a></li>
+              </ul>
+            </li>
+             <li class="treeview">
+              <a ui-sref="manageFaq">
+                <i class="fa fa-question"></i>
+                <span>Manage FAQs</span>
+              </a>
+            </li>
+
+            <li class="treeview" ng-controller="loginController">
+              <a href="#">
+                <i class="fa fa-user"></i>
+                <span>Update Profile</span>
+              </a>
+            </li>
+            <li class="treeview">
+              <a ui-sref="changePassword">
+                <i class="fa fa-key"></i>
+                <span>Change Password</span>
+              </a>
+            </li>
+            <li class="treeview" ng-controller="loginController">
+              <a href="javascript:void(0)" ng-click="logout()">
+                <i class="fa fa-sign-out"></i>
+                <span>Sign out</span>
+              </a>
+            </li>
+            <!-- <li class="treeview">
+              <a href="#">
+                <i class="fa fa-pie-chart"></i>
+                <span>Offer Reports</span>
+              </a>
+            </li> -->
+          </ul>
+        </section>
+        <!-- /.sidebar -->
